@@ -1,0 +1,44 @@
+service: aws-dynamodb-render-cache
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  memorySize: 8092
+  frameworkVersion: '2'
+  region: eu-north-1
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - lambda:*
+        - dynamodb:*
+        - kms:*
+      Resource:
+        - "*"
+  environment:
+    TABLE_NAME: "renderCache"
+    AWS_NODEJS_CONNECTION_REUSE_ENABLED: 1
+
+plugins:
+  - serverless-offline
+
+functions:
+  render:
+    handler: src/index.handler
+    events:
+      - http:
+          path: render
+          method: GET
+
+resources:
+  Resources:
+    renderCache:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: renderCache
+        AttributeDefinitions:
+          - AttributeName: url
+            AttributeType: S
+        KeySchema:
+          - AttributeName: url
+            KeyType: HASH
+        BillingMode: PAY_PER_REQUEST

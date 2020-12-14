@@ -1,0 +1,28 @@
+{
+  "name": "aws-dynamodb-render-cache",
+  "version": "1.0.0",
+  "description": "Use Lambda to fetch HTML from sites and cache it in DynamoDB for faster renders",
+  "main": "index.js",
+  "keywords": [
+    "serverless",
+    "render cache",
+    "lambda",
+    "aws",
+    "dynamodb"
+  ],
+  "author": "Mikael Vesavuori",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.12.10",
+    "@babel/eslint-parser": "^7.12.1",
+    "@babel/preset-env": "^7.12.10",
+    "eslint": "^7.15.0",
+    "eslint-config-prettier": "^7.0.0",
+    "eslint-plugin-prettier": "^3.3.0",
+    "prettier": "^2.2.1",
+    "serverless-offline": "^6.8.0"
+  },
+  "dependencies": {
+    "node-fetch": "^2.6.1"
+  }
+}
